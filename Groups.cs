@@ -37,8 +37,6 @@ public static class Groups
       for(int i = 0; i < input.Length; i++){
         c = (char)input[i];
       
-        Console.WriteLine(c);
-      
         if(c == '(' || c == '[' || c == '{')
           groupPieces.Push(c);
           
