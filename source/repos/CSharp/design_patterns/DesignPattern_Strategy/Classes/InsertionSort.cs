@@ -6,7 +6,7 @@
 
     public class InsertionSort : ISorter<int>
     {
-        public IList<int> Sort(IList<int> input)
+        public List<int> Sort(List<int> input)
         {
             List<int> subList = new List<int>();
             int currentGreater = 0;

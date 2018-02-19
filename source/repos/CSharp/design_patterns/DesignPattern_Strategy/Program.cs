@@ -5,47 +5,69 @@
     using System;
     using System.Linq;
     using System.Diagnostics;
+    using System.Collections.Generic;
 
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            int[] input = { 4, 54, 1, 22 , 12, 11, 15, 2, 53 };
+            List<int> input = GenerateRandomList(100);
 
-            var watcher = Stopwatch.StartNew();
-            UserSort(input, new InsertionSort());
-            watcher.Stop();
-            var insertionSortElapsedMilliseconds = watcher.ElapsedMilliseconds;
-
+            Console.WriteLine("Bellow it's possible to see many ways to sort an array");
             Console.WriteLine();
 
-            watcher.Restart();
-            UserSort(input, new BubbleSort());
-            watcher.Stop();
-            var bubbleSortElapsedMilliseconds = watcher.ElapsedMilliseconds;
+            Console.WriteLine("Bubble Sort");
+            UseSort(input, new BubbleSort());
 
-            Console.WriteLine();
+            Console.WriteLine("Insertion Sort");
+            UseSort(input, new InsertionSort());
 
-            watcher.Restart();
-            UserSort(input, new SelectionSort());
-            watcher.Stop();
-            var selectionSortElapsedMilliseconds = watcher.ElapsedMilliseconds;
+            Console.WriteLine("Merge Sort");
+            UseSort(input, new MergeSort());
 
-            Console.WriteLine();
-            Console.WriteLine("Insertion sort elapsed time: {0}", insertionSortElapsedMilliseconds);
-            Console.WriteLine("bubble sort elapsed time: {0}", bubbleSortElapsedMilliseconds);
-            Console.WriteLine("Selection sort elapsed time: {0}", selectionSortElapsedMilliseconds);
+            Console.WriteLine("Shell Sort");
+            UseSort(input, new ShellSort());
+
+            Console.WriteLine("Selection Sort");
+            UseSort(input, new SelectionSort());
+
+            Console.WriteLine("Quick Sort");
+            UseSort(input, new QuickSort());
 
             Console.ReadKey();
         }
 
-        private static void UserSort(int[] input, ISorter<int> sorter)
+        private static void UseSort(List<int> input, ISorter<int> sorter)
         {
-            int[] inputToBeSorted = input;
-            int[] sortedArray = sorter.Sort(inputToBeSorted.ToList()).ToArray();
+            List<int> inputToBeSorted = input;
 
-            for (int i = 0; i < input.Count(); i++)
+            Stopwatch watch = Stopwatch.StartNew();
+            List<int> sortedArray = sorter.Sort(inputToBeSorted);
+            watch.Stop();
+
+            Console.WriteLine("Sorted Array:");
+            for (int i = 0; i < input.Count; i++)
                 Console.Write(sortedArray[i] + " ");
+
+            Console.WriteLine();
+            Console.WriteLine("Elapsed time in milliseconds: {0}", watch.ElapsedMilliseconds);
+            Console.WriteLine();
+        }
+
+        private static List<int> GenerateRandomList(int numberOfElements)
+        {
+            Random random = new Random();
+            int randomNumber = 0;
+
+            HashSet<int> hashSet = new HashSet<int>();
+
+            while (hashSet.Count < numberOfElements)
+            {
+                randomNumber = random.Next(0, numberOfElements);
+                hashSet.Add(randomNumber);
+            }
+
+            return hashSet.ToList();
         }
     }
 }

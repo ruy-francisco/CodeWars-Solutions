@@ -5,7 +5,7 @@
 
     public class SelectionSort : ISorter<int>
     {
-        public IList<int> Sort(IList<int> input)
+        public List<int> Sort(List<int> input)
         {
             int lowestNumber = 0;
             int lowestIndex = 0;

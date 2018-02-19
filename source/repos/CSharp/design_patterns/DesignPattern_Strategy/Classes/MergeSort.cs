@@ -6,7 +6,7 @@
 
     public class MergeSort : ISorter<int>
     {
-        public IList<int> Sort(IList<int> input)
+        public List<int> Sort(List<int> input)
         {
             if (input.Count == 1)
                 return input;
@@ -20,7 +20,7 @@
             return MergeArrays(firstPart, secondPart);
         }
 
-        private IList<int> MergeArrays(int[] firstPart, int[] secondPart)
+        private List<int> MergeArrays(int[] firstPart, int[] secondPart)
         {
             List<int> firstPartList = firstPart.ToList();
             List<int> secondPartList = secondPart.ToList();

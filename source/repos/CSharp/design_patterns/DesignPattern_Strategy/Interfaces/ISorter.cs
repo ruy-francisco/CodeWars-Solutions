@@ -4,6 +4,6 @@
 
     public interface ISorter<T>
     {
-        IList<T> Sort(IList<T> input);
+        List<T> Sort(List<T> input);
     }
 }

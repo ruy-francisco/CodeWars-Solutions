@@ -5,7 +5,7 @@
 
     public class QuickSort : ISorter<int>
     {
-        public IList<int> Sort(IList<int> input)
+        public List<int> Sort(List<int> input)
         {
             DoTheQuickSort(0, input.Count - 1, input);
             return input;

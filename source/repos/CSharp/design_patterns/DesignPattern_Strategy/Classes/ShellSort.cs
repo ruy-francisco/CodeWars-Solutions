@@ -5,7 +5,7 @@
 
     public class ShellSort : ISorter<int>
     {
-        public IList<int> Sort(IList<int> input)
+        public List<int> Sort(List<int> input)
         {
             int interval = 1;
 
